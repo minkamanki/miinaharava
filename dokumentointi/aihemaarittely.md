@@ -12,3 +12,6 @@ Pelaajan pitää klikata auki laattoja pelialueelta. Joidenkin laattojen alla on
 * Pelin pausettaminen
 * Pelin lopettaminen enen voittoa
 * Voiton jälkeen pelaaja valitsee tahtooko uuden pelin vai sulkea ohjelman
+
+
+![luokkakaavio](/luokkakaavio.png)

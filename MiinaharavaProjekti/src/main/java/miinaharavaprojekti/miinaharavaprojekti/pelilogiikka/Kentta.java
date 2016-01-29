@@ -29,7 +29,7 @@ public class Kentta {
 
     }
 
-    private void asetaMiinat() {
+    public void asetaMiinat() {
         Random r = new Random();
         for (int i = 0; i < 10; i++) {
             int x = r.nextInt(10);
@@ -38,11 +38,24 @@ public class Kentta {
                 x = r.nextInt(10);
                 y = r.nextInt(10);
             }
-            
+
             pelialue[x][y].miinoita();
-            
+
         }
 
+    }
+
+    public void tuolostaKentta() {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (pelialue[i][j].onkoMiinallinen()) {
+                    System.out.print("x");
+                } else {
+                    System.out.print("*");
+                }
+            }
+            System.out.println("");
+        }
     }
 
 }

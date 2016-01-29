@@ -14,6 +14,6 @@
 
 **29.1**  
 
-1,5h *Testien tekoon ja luokkien muuntelemiseen*
+2,5h *Testien tekoon ja luokkien muuntelemiseen. Luokkakaavio, pit, README ja muu dokumentointi.*
 
 
