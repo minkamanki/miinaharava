@@ -14,4 +14,4 @@ Pelaajan pitää klikata auki laattoja pelialueelta. Joidenkin laattojen alla on
 * Voiton jälkeen pelaaja valitsee tahtooko uuden pelin vai sulkea ohjelman
 
 
-![luokkakaavio](dokumentointi/luokkakaavio.png)
+![luokkakaavio](luokkakaavio.png)
