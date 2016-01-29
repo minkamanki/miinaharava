@@ -5,4 +5,4 @@ Miinaharavassa pelaajan tulee etsiä kaikki pelialueelle piilotetut miinat. Pela
 
 **Dokumentaatio**  
 [aiheenkuvaus](dokumentointi/aihemaarittely.md)
-[tuntikirjanpito](dokumenointi/tunnit.md)
+[tuntikirjanpito](dokumentointi/tunnit.md)
