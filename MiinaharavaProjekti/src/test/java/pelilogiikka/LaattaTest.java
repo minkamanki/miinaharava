@@ -79,5 +79,20 @@ public class LaattaTest {
         laatta.kosketukset(5);
         assertEquals(5, laatta.getVihje());
     }
+    
+    @Test
+    public void vihjeidenLisaysYksitellen(){
+        laatta.kasvataVihjettaYhdella();
+        assertEquals(1, laatta.getVihje());
+    }
+    
+        @Test
+    public void vihjeidenLisaysYksitellen2(){
+        laatta.kasvataVihjettaYhdella();
+        laatta.kasvataVihjettaYhdella();
+        laatta.kasvataVihjettaYhdella();
+        laatta.kasvataVihjettaYhdella();
+        assertEquals(4, laatta.getVihje());
+    }
 
 }

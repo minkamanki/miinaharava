@@ -39,6 +39,10 @@ public class Laatta {
     public void miinoita(){
         this.miinallinen = true;
     }
+
+    public void kasvataVihjettaYhdella(){
+        vihje++;
+    }
     
     public void kosketukset(int maara){
         this.vihje = maara;

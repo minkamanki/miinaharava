@@ -16,4 +16,8 @@
 
 2,5h *Testien tekoon ja luokkien muuntelemiseen. Luokkakaavio, pit, README ja muu dokumentointi.*
 
+**5.2.**  
+
+5h *Pelilogiikka jotakuinkin valmis. Aloitin Kayttoliittyman tekemisen. Sain Tehtyä aloitus valikon johonkin malliin. Muutamia testejä lisää. Dokumentointi.*
+
 
