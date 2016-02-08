@@ -1,26 +1,20 @@
 #Tuntikirjanpito:
 
-**20.1.**  
+**20.1.** 3h  
+Loin ohjeita noudattaen Github-repositorion ja Netbeans Miinaharava projektin. Tein aihemäärittelyn projektistani.
 
-3h *Loin ohjeita noudattaen Github-repositorion ja Netbeans Miinaharava projektin. Tein aihemäärittelyn projektistani.*
+**21.1** 30min  
+Tuntikirjanpidon luominen. Muutin kansiorakennetta, ja poistin testihakemiston. Lisäsin ignoreita .gitignore tiedostoon.
 
-**21.1**  
+**28.1** 4h  
+Tein Laatta luokan metodeineen. Lisäksi tein Kenttä luokan ja Peli luokan. Kenttä luokkaan tein vasta pari metodia.
 
-30min *Tuntikirjanpidon luominen. Muutin kansiorakennetta, ja poistin testihakemiston. Lisäsin ignoreita .gitignore tiedostoon.*
+**29.1**2,5h  
+Testien tekoon ja luokkien muuntelemiseen. Luokkakaavio, pit, README ja muu dokumentointi.
 
-**28.1**  
+**5.2.** 5h  
+Pelilogiikka jotakuinkin valmis. Aloitin Kayttoliittyman tekemisen. Sain Tehtyä aloitus valikon johonkin malliin. Muutamia testejä lisää. Dokumentointi.
 
-4h *Tein Laatta luokan metodeineen. Lisäksi tein Kenttä luokan ja Peli luokan. Kenttä luokkaan tein vasta pari metodia.*
-
-**29.1**  
-
-2,5h *Testien tekoon ja luokkien muuntelemiseen. Luokkakaavio, pit, README ja muu dokumentointi.*
-
-**5.2.**  
-
-5h *Pelilogiikka jotakuinkin valmis. Aloitin Kayttoliittyman tekemisen. Sain Tehtyä aloitus valikon johonkin malliin. Muutamia testejä lisää. Dokumentointi.*
-
-**8.2.**  
-
-40min *Javalabrassa, pit testaus korjattu*
+**8.2.** 40min  
+Javalabrassa, pit testaus korjattu
 
