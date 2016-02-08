@@ -20,4 +20,7 @@
 
 5h *Pelilogiikka jotakuinkin valmis. Aloitin Kayttoliittyman tekemisen. Sain Tehtyä aloitus valikon johonkin malliin. Muutamia testejä lisää. Dokumentointi.*
 
+**8.2.**  
+
+40min *Javalabrassa, pit testaus korjattu*
 
