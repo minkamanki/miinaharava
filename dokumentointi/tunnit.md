@@ -45,15 +45,15 @@ Jatkoin graaffisien osuuksie tekoa.
  
 |**Päivä**|**Tunnit**|         |
 |---------|----------|---------|
-|  20.1   |          |         |
-|  21.1   |          |         |
-|  28.1   |          |         |
-|  29.1   |          |         |
-|  5.2    |          |         |
-|  8.2    |          |         |
-|  10.2   |          |         |
-|  11.2   |          |         |
-|  12.2   |          |         |
+|  20.1   |    3h    |         |
+|  21.1   |   30min  |         |
+|  28.1   |   4h     |         |
+|  29.1   |      2,5h|         |
+|  5.2    | 5h       |    Pelilogiikka jotakuinkin valmis. Aloitin Kayttoliittyman tekemisen. Sain Tehtyä aloitus valikon johonkin malliin. Muutamia testejä lisää. Dokumentointi.     |
+|  8.2    |   40min  |         |
+|  10.2   |    1h    |         |
+|  11.2   |   5h     |         |
+|  12.2   |   3h   |         |
 
 
 
