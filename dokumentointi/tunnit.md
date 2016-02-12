@@ -34,3 +34,31 @@ Pelilogiikka jotakuinkin valmis. Aloitin Kayttoliittyman tekemisen. Sain Tehtyä
 40min  
 Javalabrassa, pit testaus korjattu  
 
+**10.2.**  
+1h  
+Tein graaffista osuutta.  
+
+**11.2.**  
+5h  
+Jatkoin graaffisien osuuksie tekoa.  
+
+ 
+|**Päivä**|**Tunnit**|         |
+|---------|----------|---------|
+|  20.1   |          |         |
+|  21.1   |          |         |
+|  28.1   |          |         |
+|  29.1   |          |         |
+|  5.2    |          |         |
+|  8.2    |          |         |
+|  10.2   |          |         |
+|  11.2   |          |         |
+|  12.2   |          |         |
+
+
+
+
+
+
+
+
