@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package miinaharavaprojekti.miinaharavaprojekti.pelilogiikka;
+package fi.minka.miinaharava.pelilogiikka;
 
 /**
  *

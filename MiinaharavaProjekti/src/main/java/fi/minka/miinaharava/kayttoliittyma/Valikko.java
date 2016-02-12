@@ -1,55 +1,68 @@
-package miinaharavaprojekti.miinaharavaprojekti.kayttoliityma;
+package fi.minka.miinaharava.kayttoliittyma;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import miinaharavaprojekti.miinaharavaprojekti.pelilogiikka.Peli;
+import fi.minka.miinaharava.pelilogiikka.Peli;
+import java.awt.Container;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  *
  * @author tminka
  */
-public class Valikko extends JPanel implements ActionListener {
+public class Valikko extends JPanel implements MouseListener {
 
     private JButton helppo;
     private JButton normi;
     private JButton vaikea;
-    public Peli peli;
+    public Kayttoliittyma kl;
 
-    public Valikko(Peli peli) {
-        super(new GridLayout(1, 3));
+    public Valikko(Kayttoliittyma kl) {
+        this.kl = kl;
+    }
+
+    public void luoValikko(Container c) {
+        setLayout(new GridLayout(1, 3));
         helppo = new JButton("Helppo");
         normi = new JButton("Normaali");
         vaikea = new JButton("Vaikea");
-        this.peli = peli;
-        luoKomponentit();
-
-    }
-
-    private void luoKomponentit() {
         add(helppo);
         add(normi);
         add(vaikea);
-        helppo.addActionListener(this);
-        normi.addActionListener(this);
-        vaikea.addActionListener(this);
+        helppo.addMouseListener(this);
+        normi.addMouseListener(this);
+        vaikea.addMouseListener(this);
 
     }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {
-        Object src = ae.getSource();
-        if (src == helppo) {
-            peli.pelaa(1);
-        } else if (src == normi) {
-            peli.pelaa(2);
-        } else {
-            peli.pelaa(3);
-        }
-        
-        setVisible(false);
+    public void mouseClicked(MouseEvent me) {
+    }
 
+    @Override
+    public void mousePressed(MouseEvent me) {
+        if (me.getSource() == helppo) {
+            kl.luoKentta(1);
+        } else if (me.getSource() == normi) {
+            kl.luoKentta(2);
+        } else if (me.getSource() == vaikea) {
+            kl.luoKentta(3);
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
     }
 }

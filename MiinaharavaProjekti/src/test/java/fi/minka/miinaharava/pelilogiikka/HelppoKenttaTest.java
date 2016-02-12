@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 
-package pelilogiikka;
+package fi.minka.miinaharava.pelilogiikka;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import miinaharavaprojekti.miinaharavaprojekti.pelilogiikka.Kentta;
+import fi.minka.miinaharava.pelilogiikka.Kentta;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;

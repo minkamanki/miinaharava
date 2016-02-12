@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pelilogiikka;
+package fi.minka.miinaharava.pelilogiikka;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import miinaharavaprojekti.miinaharavaprojekti.pelilogiikka.Kentta;
+import fi.minka.miinaharava.pelilogiikka.Kentta;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -56,5 +56,45 @@ public class NormaaliKenttaTest {
     @Test
     public void eiAuki() {
         assertEquals(false, kentta.onkoAvattu(1, 1));
+    }
+
+    @Test
+    public void liputus() {
+        kentta.liputus(1, 1);
+        assertEquals(true, kentta.onkoLippu(1, 1));
+    }
+
+    @Test
+    public void eiLippua() {
+        assertEquals(false, kentta.onkoLippu(1, 1));
+    }
+    
+        @Test
+    public void eiLippua2() {
+        kentta.liputus(1, 1);
+        kentta.liputus(1, 1);
+        assertEquals(false, kentta.onkoLippu(1, 1));
+    }
+
+    @Test
+    public void miina() {
+        kentta.laatta(1, 1).miinoita();
+        assertEquals(kentta.onkoMiinaa(1, 1), true);
+    }
+
+    @Test
+    public void vihje1() {
+        int x = kentta.annaVihje(1, 1);
+        kentta.laatta(1, 1).kasvataVihjettaYhdella();
+        assertEquals(x + 1, kentta.annaVihje(1, 1));
+    }
+
+    @Test
+    public void vihje2() {
+        int x = kentta.annaVihje(1, 1);
+        kentta.laatta(1, 1).kasvataVihjettaYhdella();
+        kentta.laatta(1, 1).kasvataVihjettaYhdella();
+        kentta.laatta(1, 1).kasvataVihjettaYhdella();
+        assertEquals(x + 3, kentta.annaVihje(1, 1));
     }
 }

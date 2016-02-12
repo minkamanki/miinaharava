@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package miinaharavaprojekti.miinaharavaprojekti.main;
+package fi.minka.miinaharava.main;
 
 import javax.swing.SwingUtilities;
-import miinaharavaprojekti.miinaharavaprojekti.kayttoliityma.Kayttoliittyma;
+import fi.minka.miinaharava.kayttoliittyma.Kayttoliittyma;
 
 /*()
  *
@@ -16,7 +16,7 @@ public class Main {
     
     public static void main(String[] args){
         Kayttoliittyma kl = new Kayttoliittyma();
-        SwingUtilities.invokeLater(kl);
+        kl.run();
     }
     
 }

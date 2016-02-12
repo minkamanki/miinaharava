@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package miinaharavaprojekti.miinaharavaprojekti.pelilogiikka;
+package fi.minka.miinaharava.pelilogiikka;
 
 import java.util.Random;
 
@@ -31,7 +31,7 @@ public class Kentta {
                 this.pelialue[i][j] = new Laatta();
             }
         }
-        
+
         asetaMiinat();
 
     }
@@ -63,6 +63,16 @@ public class Kentta {
 
     }
 
+    public void asetaVihjeet(int x, int y) {
+        for (int i = x - 1; i <= x + 1; i++) {
+            for (int j = y - 1; j <= y + 1; j++) {
+                if (!(i < 0) && i < korkeus && !(j < 0) && j < leveys) {
+                    pelialue[i][j].kasvataVihjettaYhdella();
+                }
+            }
+        }
+    }
+
     public void tulostaKentta() {
         for (int i = 0; i < korkeus; i++) {
             for (int j = 0; j < leveys; j++) {
@@ -84,31 +94,28 @@ public class Kentta {
         }
     }
 
-    public void asetaVihjeet(int x, int y) {
-        for (int i = x - 1; i <= x + 1; i++) {
-            for (int j = y - 1; j <= y + 1; j++) {
-                if (!(i < 0) && i<korkeus && !(j<0) && j<leveys){
-                    pelialue[i][j].kasvataVihjettaYhdella();
-                }
-            }
-        }
-    }
-
-
     public int annaVihje(int x, int y) {
         return pelialue[x][y].getVihje();
     }
-    
-    public boolean onkoAvattu(int x, int y){
-        return  pelialue[x][y].onkoAvattu();
+
+    public boolean onkoAvattu(int x, int y) {
+        return pelialue[x][y].onkoAvattu();
     }
-    
-    public boolean onkoMiinaa(int x, int y){
+
+    public boolean onkoMiinaa(int x, int y) {
         return pelialue[x][y].onkoMiinallinen();
     }
-    
-    public void avaa(int x, int y){
+
+    public void avaa(int x, int y) {
         pelialue[x][y].avaa();
+    }
+
+    public boolean onkoLippu(int x, int y) {
+        return pelialue[x][y].onkoLippu();
+    }
+
+    public Laatta laatta(int x, int y) {
+        return pelialue[x][y];
     }
 
 }
