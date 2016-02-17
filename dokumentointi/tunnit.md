@@ -12,11 +12,9 @@
 |  8.2    |   40min  |    Javalabrassa, pit testaus korjattu     |
 |  10.2   |    1h    | Tein graaffista osuutta.        |
 |  11.2   |   5h     | Jatkoin graaffisien osuuksie tekoa.        |
-|  12.2   |   3h   |   Testit nyt Line Coverage 100% ja Mutation Coverage 78% pelilogiikassa. Piirtoalusta ja HiirikuuntelijaKanttä eivät vielä täysin toimi. Muokkasin Valikkoa ja sain lisää toiminnallisuutta.     |
-
-
-
-
+|  12.2   |   3h   |   Testit nyt Line Coverage 100% ja Mutation Coverage 78% pelilogiikassa. Piirtoalusta ja HiirikuuntelijaKentta eivät vielä täysin toimi. Muokkasin Valikkoa ja sain lisää toiminnallisuutta.     |
+| 17.2 | 3h |    Tein JavaDocin ja Checkstylen, jotka viime viikolla jäivät huomaamatta. Sain HiirikuuntelijaKentan toimimaan. Muokkasin Piirtoalustaa "tyylikkäämmäksi" (kuvat ei vieläkään toimi). Tein Kentta-luokkaan avaaKehittyeesti-metodin, joka avaa useita laattoja jos avaa laatan joka ei koske yhteenkään miinaan.     |
+| 18.2 |   |         |
 
 
 

@@ -23,15 +23,15 @@ public class VaikeaKenttaTest {
     
     ByteArrayOutputStream tulosvirta;
     Kentta kentta;
-    
+
     @Before
     public void setUp() {
         tulosvirta = new ByteArrayOutputStream();
         System.setOut(new PrintStream(tulosvirta));
         kentta = new Kentta(16,30);
     }
-    
-        @Test
+ 
+    @Test
     public void oikeaMaaraMiinoja(){
         int miinoja = 0;
         kentta.tulostaKentta();

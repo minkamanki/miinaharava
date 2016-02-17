@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package fi.minka.miinaharava.pelilogiikka;
 
 /**
@@ -11,56 +10,99 @@ package fi.minka.miinaharava.pelilogiikka;
  * @author tminka
  */
 public class Laatta {
+
     private boolean avattu;
     private boolean miinallinen;
     private boolean liputettu;
     private int vihje;
-    
-    public Laatta(){
+
+    /**
+     * Konstruktori
+     */
+    public Laatta() {
         this.avattu = false;
         this.miinallinen = false;
         this.liputettu = false;
-        this.vihje = 0; 
+        this.vihje = 0;
     }
-    
-    
-    public void avaa(){
+
+    /**
+     * Metodi, joka asettaa Laatan "avattu" arvoksi true.
+     */
+    public void avaa() {
         this.avattu = true;
     }
-    
-    public void liputa(){
-        this.liputettu = true;    
+
+    /**
+     * Metodi, joka asettaa Laatan "liputettu" arvoksi true.
+     */
+    public void liputa() {
+        this.liputettu = true;
     }
-    
-    public void poistaLiputus(){
+
+    /**
+     * Metodi, joka asettaa Laatan "liputettu" arvoksi false.
+     */
+    public void poistaLiputus() {
         this.liputettu = false;
     }
-    
-    public void miinoita(){
+
+    /**
+     * Metodi, joka asettaa Laatan "miinallinen" arvoksi true.
+     */
+    public void miinoita() {
         this.miinallinen = true;
     }
 
-    public void kasvataVihjettaYhdella(){
+    /**
+     * Metodi, joka kasvattaa Laatan "vihje" arvoa yhdellä.
+     */
+    public void kasvataVihjettaYhdella() {
         vihje++;
     }
-    
-    public void kosketukset(int maara){
+
+    /**
+     * Metodi, joka asettaa annatun maaran, vihjeeksi.
+     *
+     * @param maara
+     */
+    public void kosketukset(int maara) {
         this.vihje = maara;
     }
 
-    public boolean onkoAvattu(){
+    /**
+     * Metodi, joka palauttaa Laatan "avattu" arvon.
+     *
+     * @return Laatan "avattu" arvo, true tai false.
+     */
+    public boolean onkoAvattu() {
         return avattu;
     }
-    
-    public boolean onkoMiinallinen(){
+
+    /**
+     * Metodi palauttaa Laatan "miinallinen" arvon.
+     *
+     * @return boolean miinallinen
+     */
+    public boolean onkoMiinallinen() {
         return miinallinen;
     }
-    
-    public boolean onkoLippu(){
+
+    /**
+     * Metodi palauttaa Laatan "lipuettu" arvon.
+     *
+     * @return boolean liputettu
+     */
+    public boolean onkoLippu() {
         return liputettu;
     }
-    
-    public int getVihje(){
+
+    /**
+     * Metodi palauttaa Laatan "vihje" arvon.
+     *
+     * @return vihje
+     */
+    public int getVihje() {
         return vihje;
     }
 }

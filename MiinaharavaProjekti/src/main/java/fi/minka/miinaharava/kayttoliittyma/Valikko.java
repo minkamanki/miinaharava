@@ -1,11 +1,8 @@
 package fi.minka.miinaharava.kayttoliittyma;
 
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import fi.minka.miinaharava.pelilogiikka.Peli;
 import java.awt.Container;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -19,12 +16,23 @@ public class Valikko extends JPanel implements MouseListener {
     private JButton helppo;
     private JButton normi;
     private JButton vaikea;
-    public Kayttoliittyma kl;
+    private final Kayttoliittyma kl;
 
+    /**
+     * Kostruktori.
+     *
+     * @param kl Kayttoliittyma luokan ilmantyma
+     */
     public Valikko(Kayttoliittyma kl) {
         this.kl = kl;
     }
 
+    /**
+     * Metodi, jossa luodaan alsutalle kolmi nappia, jotka lisätään
+     * kuunneltaviksi.
+     *
+     * @param c
+     */
     public void luoValikko(Container c) {
         setLayout(new GridLayout(1, 3));
         helppo = new JButton("Helppo");
@@ -43,6 +51,11 @@ public class Valikko extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent me) {
     }
 
+    /**
+     * Metodi, joka vie tiedon klikatusta napista Kayttoliittymalle.
+     *
+     * @param me
+     */
     @Override
     public void mousePressed(MouseEvent me) {
         if (me.getSource() == helppo) {
@@ -54,6 +67,10 @@ public class Valikko extends JPanel implements MouseListener {
         }
     }
 
+    /**
+     *
+     * @param me
+     */
     @Override
     public void mouseReleased(MouseEvent me) {
     }

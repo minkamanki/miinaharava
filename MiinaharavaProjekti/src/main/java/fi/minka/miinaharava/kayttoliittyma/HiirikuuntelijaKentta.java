@@ -17,6 +17,11 @@ public class HiirikuuntelijaKentta implements MouseListener {
 
     private final Kayttoliittyma kl;
 
+    /**
+     * Konstruktori
+     *
+     * @param kl Kayttoliittyma luokan ilmentymä
+     */
     public HiirikuuntelijaKentta(Kayttoliittyma kl) {
         this.kl = kl;
     }
@@ -25,16 +30,22 @@ public class HiirikuuntelijaKentta implements MouseListener {
     public void mouseClicked(MouseEvent me) {
     }
 
+    /**
+     * Metodi antaa Kayttoliitymaan tiedon, painettiinko hiirtä vasemmalla vai
+     * oikealla napilla, ja lisäksi missä kohti.
+     *
+     * @param me Hiiren painaus
+     */
     @Override
     public void mousePressed(MouseEvent me) {
-        if(me.getX()<20 || me.getY()<20){
+        if (me.getX() < 20 || me.getY() < 20) {
             return;
         }
-        if(me.getButton() == MouseEvent.BUTTON1){
-            kl.vasenKlikkaus((me.getX()-20)/20, (me.getY()-20)/20);
+        if (me.getButton() == MouseEvent.BUTTON1) {
+            kl.vasenKlikkaus((me.getX() - 20) / 20, (me.getY() - 20) / 20);
         }
-        if(me.getButton() == MouseEvent.BUTTON3){
-            kl.oikeaKilikkaus((me.getX()-20)/20, (me.getY()-20)/20);
+        if (me.getButton() == MouseEvent.BUTTON3) {
+            kl.oikeaKilikkaus((me.getX() - 20) / 20, (me.getY() - 20) / 20);
         }
     }
 

@@ -5,18 +5,27 @@
  */
 package fi.minka.miinaharava.main;
 
-import javax.swing.SwingUtilities;
 import fi.minka.miinaharava.kayttoliittyma.Kayttoliittyma;
 
 /*()
  *
  * @author tminka
  */
+/**
+ *
+ * @author tminka
+ */
 public class Main {
-    
-    public static void main(String[] args){
+
+    /**
+     * Main metodi, joka luo uuden Kayttoliityma luokan ilmentymän ja kutsuu sen
+     * metodia run().
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
         Kayttoliittyma kl = new Kayttoliittyma();
         kl.run();
     }
-    
+
 }

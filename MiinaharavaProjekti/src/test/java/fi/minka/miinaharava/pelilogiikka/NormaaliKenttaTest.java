@@ -69,7 +69,7 @@ public class NormaaliKenttaTest {
         assertEquals(false, kentta.onkoLippu(1, 1));
     }
     
-        @Test
+    @Test
     public void eiLippua2() {
         kentta.liputus(1, 1);
         kentta.liputus(1, 1);
