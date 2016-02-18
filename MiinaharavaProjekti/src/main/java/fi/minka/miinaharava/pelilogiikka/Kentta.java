@@ -48,9 +48,9 @@ public class Kentta {
 
         if (leveys == 9) {
             miinoja = 10;
-        } else if (leveys == 16) {
+        } else if (korkeus == 16) {
             miinoja = 40;
-        } else if (leveys == 30) {
+        } else if (korkeus == 30) {
             miinoja = 99;
         }
 
@@ -82,18 +82,18 @@ public class Kentta {
     /**
      * Metodi (testauksia varten), joka tulostaa kentän syötteenä.
      */
-    public void tulostaKentta() {
-        for (int i = 0; i < korkeus; i++) {
-            for (int j = 0; j < leveys; j++) {
-                if (pelialue[i][j].onkoMiinallinen()) {
-                    System.out.print("x");
-                } else {
-                    System.out.print(pelialue[i][j].getVihje());
-                }
-            }
-            System.out.println("");
-        }
-    }
+//    public void tulostaKentta() {
+//        for (int i = 0; i < korkeus; i++) {
+//            for (int j = 0; j < leveys; j++) {
+//                if (pelialue[i][j].onkoMiinallinen()) {
+//                    System.out.print("x");
+//                } else {
+//                    System.out.print(pelialue[i][j].getVihje());
+//                }
+//            }
+//            System.out.println("");
+//        }
+//    }
 
     /**
      * Metodi, joka liputtaa liputtamattoman laatan tai poistaa lipun
@@ -143,6 +143,14 @@ public class Kentta {
         return pelialue[x][y].onkoMiinallinen();
     }
 
+    /**
+     * Metodi, joka kutsuu avaa() metodia, ja samalla tarkistaa, jos miina
+     * kosketuksia on 0. Tällöin kutsuu avaa metodia myös kaikille joihin
+     * koskee, jos ne ei ole avattuja tai liputettuja.
+     *
+     * @param x sijainti
+     * @param y sijainti
+     */
     public void avaaKehittyneesti(int x, int y) {
         avaa(x, y);
 
@@ -150,7 +158,7 @@ public class Kentta {
             for (int i = x - 1; i <= x + 1; i++) {
                 for (int j = y - 1; j <= y + 1; j++) {
                     if (!(i < 0) && i < korkeus && !(j < 0) && j < leveys) {
-                        if (!pelialue[i][j].onkoAvattu()) {
+                        if (!pelialue[i][j].onkoAvattu() && !pelialue[i][j].onkoLippu()) {
                             avaaKehittyneesti(i, j);
                         }
 
@@ -194,6 +202,22 @@ public class Kentta {
      */
     public Laatta laatta(int x, int y) {
         return pelialue[x][y];
+    }
+
+    /**
+     *Metodi plauttaa korkeus olioon tallennetun arvon.
+     * @return Kentan korkeuden
+     */
+    public int getKorkeus() {
+        return korkeus;
+    }
+
+    /**
+     *Metodi plauttaa leveys olioon tallennetun arvon.
+     * @return Kentan leveyden
+     */
+    public int getLeveys() {
+        return leveys;
     }
 
 }

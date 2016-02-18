@@ -14,7 +14,10 @@
 |  11.2   |   5h     | Jatkoin graaffisien osuuksie tekoa.        |
 |  12.2   |   3h   |   Testit nyt Line Coverage 100% ja Mutation Coverage 78% pelilogiikassa. Piirtoalusta ja HiirikuuntelijaKentta eivät vielä täysin toimi. Muokkasin Valikkoa ja sain lisää toiminnallisuutta.     |
 | 17.2 | 3h |    Tein JavaDocin ja Checkstylen, jotka viime viikolla jäivät huomaamatta. Sain HiirikuuntelijaKentan toimimaan. Muokkasin Piirtoalustaa "tyylikkäämmäksi" (kuvat ei vieläkään toimi). Tein Kentta-luokkaan avaaKehittyeesti-metodin, joka avaa useita laattoja jos avaa laatan joka ei koske yhteenkään miinaan.     |
-| 18.2 |   |         |
+| 18.2 | 3h  |    Sain pelin toimimaan myös vaikealla kentällä, joka aiemmin ei toiminut. Sain myös kuvat toimimaan. Uusi toiminnalliuus: Jos lippu, ei voi avata. Häviämis-, voittamis- ja uusi peli -toiminnallisuudet enää puuttuvat. |
+|||
+|||
+|||
 
 
 

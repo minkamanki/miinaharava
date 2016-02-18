@@ -5,13 +5,7 @@
  */
 package fi.minka.miinaharava.pelilogiikka;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import fi.minka.miinaharava.pelilogiikka.Kentta;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,30 +15,26 @@ import static org.junit.Assert.*;
  */
 public class NormaaliKenttaTest {
 
-    ByteArrayOutputStream tulosvirta;
     Kentta kentta;
 
     @Before
     public void setUp() {
-        tulosvirta = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(tulosvirta));
         kentta = new Kentta(16, 16);
     }
 
     @Test
     public void oikeaMaaraMiinoja() {
         int miinoja = 0;
-        kentta.tulostaKentta();
 
-        String tuloste = tulosvirta.toString();
-
-        for (int i = 0; i < tuloste.length(); i++) {
-            if (tuloste.charAt(i) == 'x') {
-                miinoja++;
+        for (int i = 0; i < kentta.getKorkeus(); i++) {
+            for (int j = 0; j < kentta.getLeveys(); j++) {
+                if (kentta.laatta(i, j).onkoMiinallinen()) {
+                    miinoja++;
+                }
             }
+
         }
         assertEquals(40, miinoja);
-
     }
 
     @Test
@@ -68,7 +58,7 @@ public class NormaaliKenttaTest {
     public void eiLippua() {
         assertEquals(false, kentta.onkoLippu(1, 1));
     }
-    
+
     @Test
     public void eiLippua2() {
         kentta.liputus(1, 1);
@@ -96,5 +86,16 @@ public class NormaaliKenttaTest {
         kentta.laatta(1, 1).kasvataVihjettaYhdella();
         kentta.laatta(1, 1).kasvataVihjettaYhdella();
         assertEquals(x + 3, kentta.annaVihje(1, 1));
+    }
+    
+        
+    @Test
+    public void korkeus(){
+        assertEquals(16, kentta.getKorkeus());
+    }
+    
+        @Test
+    public void leveys(){
+        assertEquals(16, kentta.getLeveys());
     }
 }

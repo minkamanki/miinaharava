@@ -72,7 +72,7 @@ public class Kayttoliittyma extends JFrame {
         pack();
         setTitle("Miinaharava");
 
-        setSize(peli.getLeveys() * 20 + 50, peli.getKorkeus() * 20 + 50);
+        setSize(peli.getKentta().getKorkeus()* 20 + 50, peli.getKentta().getLeveys()* 20 + 50);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -85,12 +85,14 @@ public class Kayttoliittyma extends JFrame {
      * @param y Sijainti korkeus suunnassa
      */
     public void vasenKlikkaus(int x, int y) {
-        peli.getKentta().avaaKehittyneesti(x, y);
-        repaint();
-        if (peli.getKentta().onkoMiinaa(x, y)) {
-            System.out.println("HÄVSIT");
-        } else {
-            //tarkista voitto
+        if (!peli.getKentta().onkoLippu(x, y)) {
+            peli.getKentta().avaaKehittyneesti(x, y);
+            repaint();
+            if (peli.getKentta().onkoMiinaa(x, y)) {
+                System.out.println("HÄVSIT");
+            } else {
+                //tarkista voitto
+            }
         }
     }
 

@@ -11,8 +11,6 @@ package fi.minka.miinaharava.pelilogiikka;
  */
 public class Peli {
 
-    private int leveys;
-    private int korkeus;
     private Kentta kentta;
 
     /**
@@ -24,16 +22,12 @@ public class Peli {
         //kentta voi olla vain 9x9, 16x16 tai 16x30
         if (taso == 1) {
             kentta = new Kentta(9, 9);
-            leveys = 9;
-            korkeus = 9;
+
         } else if (taso == 2) {
             kentta = new Kentta(16, 16);
-            leveys = 16;
-            korkeus = 16;
+
         } else {
-            kentta = new Kentta(16, 30);
-            leveys = 30;
-            korkeus = 16;
+            kentta = new Kentta(30, 16);
 
         }
     }
@@ -47,19 +41,4 @@ public class Peli {
         return kentta;
     }
 
-    /**
-     *
-     * @return leveys olio
-     */
-    public int getLeveys() {
-        return leveys;
-    }
-
-    /**
-     *
-     * @return korkeus olio
-     */
-    public int getKorkeus() {
-        return korkeus;
-    }
 }

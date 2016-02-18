@@ -37,8 +37,8 @@ public class Piirtoalusta extends JPanel {
      * @param g
      */
     public void piirraKentta(Graphics g) {
-        for (int i = 0; i < peli.getLeveys(); i++) {
-            for (int j = 0; j < peli.getKorkeus(); j++) {
+        for (int i = 0; i < peli.getKentta().getKorkeus(); i++) {
+            for (int j = 0; j < peli.getKentta().getLeveys(); j++) {
                 piirraLaatta(i, j, g);
             }
         }
@@ -52,23 +52,22 @@ public class Piirtoalusta extends JPanel {
      * @param g
      */
     public void piirraLaatta(int x, int y, Graphics g) {
-//        ImageIcon lippu = new ImageIcon(getClass().getResource("flag.png"));
-//        ImageIcon miina = new ImageIcon("mine.png");
-
-        g.setColor(Color.BLACK);
-        g.drawRect(20 + (x * 20), 20 + (y * 20), 20, 20);
+        ImageIcon lippu = new ImageIcon("flag.png");
+        ImageIcon miina = new ImageIcon("mine.png");
+        ImageIcon laatta = new ImageIcon("laattta.png");
 
         if (!peli.getKentta().onkoAvattu(x, y)) {
-            g.setColor(Color.GRAY);
-            g.fillRect(21 + (x * 20), 21 + (y * 20), 19, 19);
+            laatta.paintIcon(this, g, 21 + (x * 20), 21 + (y * 20));
             if (peli.getKentta().onkoLippu(x, y)) {
-//                lippu.paintIcon(this, g, 20, 20);
-
+                lippu.paintIcon(this, g, 21 + (x * 20), 21 + (y * 20));
             }
 
         } else {
+            g.setColor(Color.gray);
+            g.drawRect(20 + (x * 20), 20 + (y * 20), 20, 20);
+
             if (peli.getKentta().onkoMiinaa(x, y)) {
-//                miina.paintIcon(this, g, 19, 19);
+                miina.paintIcon(this, g, 21 + (x * 20), 21 + (y * 20));
             } else {
                 g.setColor(Color.LIGHT_GRAY);
                 g.fillRect(21 + (x * 20), 21 + (y * 20), 19, 19);
