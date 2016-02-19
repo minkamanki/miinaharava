@@ -20,14 +20,16 @@ public class HelppoKenttaTest {
     @Before
     public void setUp() {
         kentta = new Kentta(9, 9);
+        
+        kentta.luoPelialue();
     }
 
     @Test
     public void oikeaMaaraMiinoja() {
         int miinoja = 0;
 
-        for (int i = 0; i < kentta.getKorkeus(); i++) {
-            for (int j = 0; j < kentta.getLeveys(); j++) {
+        for (int i = 0; i < kentta.getLeveys(); i++) {
+            for (int j = 0; j < kentta.getKorkeus(); j++) {
                 if (kentta.laatta(i, j).onkoMiinallinen()) {
                     miinoja++;
                 }

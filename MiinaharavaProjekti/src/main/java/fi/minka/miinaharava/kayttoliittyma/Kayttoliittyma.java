@@ -25,6 +25,7 @@ public class Kayttoliittyma extends JFrame {
      */
     public Kayttoliittyma() {
         peli = new Peli();
+        valikko = new Valikko(this);
         hiiri = new HiirikuuntelijaKentta(this);
 
     }
@@ -37,7 +38,7 @@ public class Kayttoliittyma extends JFrame {
         setTitle("Menu");
         setPreferredSize(new Dimension(600, 400));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        valikko = new Valikko(this);
+
         getContentPane().add(valikko);
         valikko.luoValikko(getContentPane());
 
@@ -55,7 +56,6 @@ public class Kayttoliittyma extends JFrame {
      */
     public void luoKentta(int taso) {
         peli.luoKentta(taso);
-        setVisible(false);
         getContentPane().remove(valikko);
         aloitaPeli();
     }
@@ -72,7 +72,7 @@ public class Kayttoliittyma extends JFrame {
         pack();
         setTitle("Miinaharava");
 
-        setSize(peli.getKentta().getKorkeus()* 20 + 50, peli.getKentta().getLeveys()* 20 + 50);
+        setSize(peli.getKentta().getLeveys() * 20 + 50, peli.getKentta().getKorkeus() * 20 + 50);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -85,10 +85,10 @@ public class Kayttoliittyma extends JFrame {
      * @param y Sijainti korkeus suunnassa
      */
     public void vasenKlikkaus(int x, int y) {
-        if (!peli.getKentta().onkoLippu(x, y)) {
+        if (!peli.getKentta().laatta(x, y).onkoLippu()) {
             peli.getKentta().avaaKehittyneesti(x, y);
             repaint();
-            if (peli.getKentta().onkoMiinaa(x, y)) {
+            if (peli.getKentta().laatta(x, y).onkoMiinallinen()) {
                 System.out.println("HÄVSIT");
             } else {
                 //tarkista voitto
@@ -104,7 +104,7 @@ public class Kayttoliittyma extends JFrame {
      * @param y Sijainti korkeus suunnassa
      */
     public void oikeaKilikkaus(int x, int y) {
-        if (!peli.getKentta().onkoAvattu(x, y)) {
+        if (!peli.getKentta().laatta(x, y).onkoAvattu()) {
             peli.getKentta().liputus(x, y);
 
         }

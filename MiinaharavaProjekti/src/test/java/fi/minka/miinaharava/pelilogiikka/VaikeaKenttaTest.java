@@ -21,14 +21,15 @@ public class VaikeaKenttaTest {
     @Before
     public void setUp() {
         kentta = new Kentta(30, 16);
+        kentta.luoPelialue();
     }
 
     @Test
     public void oikeaMaaraMiinoja() {
         int miinoja = 0;
 
-        for (int i = 0; i < kentta.getKorkeus(); i++) {
-            for (int j = 0; j < kentta.getLeveys(); j++) {
+        for (int i = 0; i < kentta.getLeveys(); i++) {
+            for (int j = 0; j < kentta.getKorkeus(); j++) {
                 if (kentta.laatta(i, j).onkoMiinallinen()) {
                     miinoja++;
                 }
@@ -42,11 +43,11 @@ public class VaikeaKenttaTest {
     
     @Test
     public void korkeus(){
-        assertEquals(30, kentta.getKorkeus());
+        assertEquals(16, kentta.getKorkeus());
     }
     
         @Test
     public void leveys(){
-        assertEquals(16, kentta.getLeveys());
+        assertEquals(30, kentta.getLeveys());
     }
 }

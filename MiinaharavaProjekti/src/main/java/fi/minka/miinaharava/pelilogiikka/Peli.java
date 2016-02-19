@@ -30,6 +30,8 @@ public class Peli {
             kentta = new Kentta(30, 16);
 
         }
+        
+        kentta.luoPelialue();
     }
 
     /**

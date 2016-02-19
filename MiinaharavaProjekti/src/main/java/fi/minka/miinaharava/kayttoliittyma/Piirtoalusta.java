@@ -9,7 +9,6 @@ import fi.minka.miinaharava.pelilogiikka.Peli;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -20,6 +19,9 @@ import javax.swing.JPanel;
 public class Piirtoalusta extends JPanel {
 
     private final Peli peli;
+    private final ImageIcon lippu;
+    private final ImageIcon miina;
+    private final ImageIcon laatta;
 
     /**
      * Konstruktori, jossa asetataan parametrina saatu Peli luokan ilmentyma
@@ -29,6 +31,9 @@ public class Piirtoalusta extends JPanel {
      */
     public Piirtoalusta(Peli peli) {
         this.peli = peli;
+        lippu = new ImageIcon("flag.png");
+        miina = new ImageIcon("mine.png");
+        laatta = new ImageIcon("laattta.png");
     }
 
     /**
@@ -37,8 +42,8 @@ public class Piirtoalusta extends JPanel {
      * @param g
      */
     public void piirraKentta(Graphics g) {
-        for (int i = 0; i < peli.getKentta().getKorkeus(); i++) {
-            for (int j = 0; j < peli.getKentta().getLeveys(); j++) {
+        for (int i = 0; i < peli.getKentta().getLeveys(); i++) {
+            for (int j = 0; j < peli.getKentta().getKorkeus(); j++) {
                 piirraLaatta(i, j, g);
             }
         }
@@ -52,13 +57,10 @@ public class Piirtoalusta extends JPanel {
      * @param g
      */
     public void piirraLaatta(int x, int y, Graphics g) {
-        ImageIcon lippu = new ImageIcon("flag.png");
-        ImageIcon miina = new ImageIcon("mine.png");
-        ImageIcon laatta = new ImageIcon("laattta.png");
 
-        if (!peli.getKentta().onkoAvattu(x, y)) {
+        if (!peli.getKentta().laatta(x, y).onkoAvattu()) {
             laatta.paintIcon(this, g, 21 + (x * 20), 21 + (y * 20));
-            if (peli.getKentta().onkoLippu(x, y)) {
+            if (peli.getKentta().laatta(x, y).onkoLippu()) {
                 lippu.paintIcon(this, g, 21 + (x * 20), 21 + (y * 20));
             }
 
@@ -66,37 +68,40 @@ public class Piirtoalusta extends JPanel {
             g.setColor(Color.gray);
             g.drawRect(20 + (x * 20), 20 + (y * 20), 20, 20);
 
-            if (peli.getKentta().onkoMiinaa(x, y)) {
+            if (peli.getKentta().laatta(x, y).onkoMiinallinen()) {
                 miina.paintIcon(this, g, 21 + (x * 20), 21 + (y * 20));
             } else {
                 g.setColor(Color.LIGHT_GRAY);
                 g.fillRect(21 + (x * 20), 21 + (y * 20), 19, 19);
-                if (peli.getKentta().annaVihje(x, y) == 1) {
+                int vihje = peli.getKentta().laatta(x, y).getVihje();
+                
+                if (vihje == 1) {
                     g.setColor(Color.BLUE);
-                } else if (peli.getKentta().annaVihje(x, y) == 2) {
+                    
+                } else if ( vihje== 2) {
                     g.setColor(new Color(14, 168, 14));
 
-                } else if (peli.getKentta().annaVihje(x, y) == 3) {
+                } else if (vihje == 3) {
                     g.setColor(Color.RED);
 
-                } else if (peli.getKentta().annaVihje(x, y) == 4) {
+                } else if (vihje == 4) {
                     g.setColor(new Color(1, 9, 122));
 
-                } else if (peli.getKentta().annaVihje(x, y) == 5) {
+                } else if (vihje == 5) {
                     g.setColor(new Color(102, 0, 0));
 
-                } else if (peli.getKentta().annaVihje(x, y) == 6) {
+                } else if (vihje == 6) {
                     g.setColor(new Color(0, 102, 102));
 
-                } else if (peli.getKentta().annaVihje(x, y) == 7) {
+                } else if (vihje == 7) {
                     g.setColor(new Color(114, 47, 86));
 
-                } else if (peli.getKentta().annaVihje(x, y) != 0) {
+                } else if (vihje!= 0) {
                     g.setColor(Color.black);
                 }
 
                 g.setFont(new Font("default", Font.BOLD, 16));
-                g.drawString("" + peli.getKentta().annaVihje(x, y), 25 + (x * 20), 37 + (y * 20));
+                g.drawString("" + vihje, 25 + (x * 20), 37 + (y * 20));
             }
         }
     }

@@ -50,19 +50,19 @@ public class PeliTest {
     @Test
     public void kentta3Leveys() {
         peli.luoKentta(3);
-        assertEquals(peli.getKentta().getLeveys(), 16);
+        assertEquals(peli.getKentta().getLeveys(), 30);
     }
 
     @Test
     public void kentta3Korkeus() {
         peli.luoKentta(3);
-        assertEquals(peli.getKentta().getKorkeus(), 30);
+        assertEquals(peli.getKentta().getKorkeus(), 16);
     }
     
     @Test
     public void kentta1(){
         peli.luoKentta(1);
-        assertEquals(peli.getKentta().onkoAvattu(1, 1), false);
+        assertEquals(peli.getKentta().laatta(1, 1).onkoAvattu(), false);
     }
 
 }

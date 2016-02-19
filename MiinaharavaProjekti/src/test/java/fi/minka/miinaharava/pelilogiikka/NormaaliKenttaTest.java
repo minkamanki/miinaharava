@@ -20,14 +20,15 @@ public class NormaaliKenttaTest {
     @Before
     public void setUp() {
         kentta = new Kentta(16, 16);
+        kentta.luoPelialue();
     }
 
     @Test
     public void oikeaMaaraMiinoja() {
         int miinoja = 0;
 
-        for (int i = 0; i < kentta.getKorkeus(); i++) {
-            for (int j = 0; j < kentta.getLeveys(); j++) {
+        for (int i = 0; i < kentta.getLeveys(); i++) {
+            for (int j = 0; j < kentta.getKorkeus(); j++) {
                 if (kentta.laatta(i, j).onkoMiinallinen()) {
                     miinoja++;
                 }
@@ -38,64 +39,54 @@ public class NormaaliKenttaTest {
     }
 
     @Test
-    public void avaus() {
-        kentta.avaa(1, 1);
-        assertEquals(true, kentta.onkoAvattu(1, 1));
-    }
-
-    @Test
     public void eiAuki() {
-        assertEquals(false, kentta.onkoAvattu(1, 1));
-    }
-
-    @Test
-    public void liputus() {
-        kentta.liputus(1, 1);
-        assertEquals(true, kentta.onkoLippu(1, 1));
-    }
-
-    @Test
-    public void eiLippua() {
-        assertEquals(false, kentta.onkoLippu(1, 1));
-    }
-
-    @Test
-    public void eiLippua2() {
-        kentta.liputus(1, 1);
-        kentta.liputus(1, 1);
-        assertEquals(false, kentta.onkoLippu(1, 1));
-    }
-
-    @Test
-    public void miina() {
-        kentta.laatta(1, 1).miinoita();
-        assertEquals(kentta.onkoMiinaa(1, 1), true);
+        assertEquals(false, kentta.laatta(1, 1).onkoAvattu());
     }
 
     @Test
     public void vihje1() {
-        int x = kentta.annaVihje(1, 1);
+        int x = kentta.laatta(1, 1).getVihje();
         kentta.laatta(1, 1).kasvataVihjettaYhdella();
-        assertEquals(x + 1, kentta.annaVihje(1, 1));
+        assertEquals(x + 1, kentta.laatta(1, 1).getVihje());
     }
 
     @Test
     public void vihje2() {
-        int x = kentta.annaVihje(1, 1);
+        int x = kentta.laatta(1, 1).getVihje();
         kentta.laatta(1, 1).kasvataVihjettaYhdella();
         kentta.laatta(1, 1).kasvataVihjettaYhdella();
         kentta.laatta(1, 1).kasvataVihjettaYhdella();
-        assertEquals(x + 3, kentta.annaVihje(1, 1));
+        assertEquals(x + 3, kentta.laatta(1, 1).getVihje());
     }
-    
-        
+
     @Test
-    public void korkeus(){
+    public void korkeus() {
         assertEquals(16, kentta.getKorkeus());
     }
-    
-        @Test
-    public void leveys(){
+
+    @Test
+    public void leveys() {
         assertEquals(16, kentta.getLeveys());
+    }
+
+    @Test
+    public void lippu() {
+        kentta.liputus(1, 1);
+        assertEquals(true, kentta.laatta(1, 1).onkoLippu());
+
+    }
+
+    @Test
+    public void lippu2() {
+        kentta.liputus(1, 1);
+        kentta.liputus(1, 1);
+        assertEquals(false, kentta.laatta(1, 1).onkoLippu());
+
+    }
+    @Test
+    public void avaaKehittyneesti() {
+       kentta.avaaKehittyneesti(1, 1);
+        assertEquals(true, kentta.laatta(1, 1).onkoAvattu());
+
     }
 }

@@ -15,25 +15,28 @@ public class Kentta {
     //pelialueen koko tulee aina olemaan 9x9, 16x16 tai 30x16.
 
     private final Laatta[][] pelialue;
-    private final int korkeus;
     private final int leveys;
+    private final int korkeus;
 
     /**
      * Konstruktori, jossa kutsutaan private metodia luoPelialue.
      *
-     * @param korkeus
      * @param leveys
+     * @param korkeus
      */
-    public Kentta(int korkeus, int leveys) {
-        pelialue = new Laatta[korkeus][leveys];
-        this.korkeus = korkeus;
+    public Kentta(int leveys, int korkeus) {
+        pelialue = new Laatta[leveys][korkeus];
         this.leveys = leveys;
-        luoPelialue();
+        this.korkeus = korkeus;
     }
 
-    private void luoPelialue() {
-        for (int i = 0; i < korkeus; i++) {
-            for (int j = 0; j < leveys; j++) {
+    /**
+     *Metodi, joka luo Laatta luokan ilmentymiä pelialue taulukkoon, ja joka
+     * kutsuu metodia asetaMiinat().
+     */
+    public void luoPelialue() {
+        for (int i = 0; i < leveys; i++) {
+            for (int j = 0; j < korkeus; j++) {
                 this.pelialue[i][j] = new Laatta();
             }
         }
@@ -46,20 +49,20 @@ public class Kentta {
         Random r = new Random();
         int miinoja = 0;
 
-        if (leveys == 9) {
+        if (korkeus == 9) {
             miinoja = 10;
-        } else if (korkeus == 16) {
+        } else if (leveys == 16) {
             miinoja = 40;
-        } else if (korkeus == 30) {
+        } else if (leveys == 30) {
             miinoja = 99;
         }
 
         for (int i = 0; i < miinoja; i++) {
-            int x = r.nextInt(korkeus);
-            int y = r.nextInt(leveys);
+            int x = r.nextInt(leveys);
+            int y = r.nextInt(korkeus);
             while (pelialue[x][y].onkoMiinallinen()) {
-                x = r.nextInt(korkeus);
-                y = r.nextInt(leveys);
+                x = r.nextInt(leveys);
+                y = r.nextInt(korkeus);
             }
 
             pelialue[x][y].miinoita();
@@ -72,7 +75,7 @@ public class Kentta {
     private void asetaVihjeet(int x, int y) {
         for (int i = x - 1; i <= x + 1; i++) {
             for (int j = y - 1; j <= y + 1; j++) {
-                if (!(i < 0) && i < korkeus && !(j < 0) && j < leveys) {
+                if (!(i < 0) && i < leveys && !(j < 0) && j < korkeus) {
                     pelialue[i][j].kasvataVihjettaYhdella();
                 }
             }
@@ -83,8 +86,8 @@ public class Kentta {
      * Metodi (testauksia varten), joka tulostaa kentän syötteenä.
      */
 //    public void tulostaKentta() {
-//        for (int i = 0; i < korkeus; i++) {
-//            for (int j = 0; j < leveys; j++) {
+//        for (int i = 0; i < levey; i++) {
+//            for (int j = 0; j < kokeus; j++) {
 //                if (pelialue[i][j].onkoMiinallinen()) {
 //                    System.out.print("x");
 //                } else {
@@ -111,53 +114,19 @@ public class Kentta {
     }
 
     /**
-     * Metodi, joka palauttaa halutun laatan vihje-arvon.
-     *
-     * @param x
-     * @param y
-     * @return vihje, eli kuinka moneen miinaan koskee
-     */
-    public int annaVihje(int x, int y) {
-        return pelialue[x][y].getVihje();
-    }
-
-    /**
-     * Metodi palauttaa halutun Laatan "avattu" arvon.
-     *
-     * @param x
-     * @param y
-     * @return boolean avattu
-     */
-    public boolean onkoAvattu(int x, int y) {
-        return pelialue[x][y].onkoAvattu();
-    }
-
-    /**
      * Metodi palauttaa halutun Laatan "miinallinen" arvon.
      *
      * @param x
      * @param y
-     * @return boolean miinallinen
      */
-    public boolean onkoMiinaa(int x, int y) {
-        return pelialue[x][y].onkoMiinallinen();
-    }
 
-    /**
-     * Metodi, joka kutsuu avaa() metodia, ja samalla tarkistaa, jos miina
-     * kosketuksia on 0. Tällöin kutsuu avaa metodia myös kaikille joihin
-     * koskee, jos ne ei ole avattuja tai liputettuja.
-     *
-     * @param x sijainti
-     * @param y sijainti
-     */
     public void avaaKehittyneesti(int x, int y) {
-        avaa(x, y);
+        pelialue[x][y].avaa();
 
         if (pelialue[x][y].getVihje() == 0) {
             for (int i = x - 1; i <= x + 1; i++) {
                 for (int j = y - 1; j <= y + 1; j++) {
-                    if (!(i < 0) && i < korkeus && !(j < 0) && j < leveys) {
+                    if (!(i < 0) && i < leveys && !(j < 0) && j < korkeus) {
                         if (!pelialue[i][j].onkoAvattu() && !pelialue[i][j].onkoLippu()) {
                             avaaKehittyneesti(i, j);
                         }
@@ -170,27 +139,8 @@ public class Kentta {
 
     }
 
-    /**
-     * Metodi kutsuu halutussa sijainnissa olevan Laatta luokan ilmentymän
-     * metodia avaa().
-     *
-     * @param x
-     * @param y
-     */
-    public void avaa(int x, int y) {
-        pelialue[x][y].avaa();
-    }
 
-    /**
-     * Metodi palauttaa halutun Laatan "liputettu" arvon
-     *
-     * @param x
-     * @param y
-     * @return boolean liputettu
-     */
-    public boolean onkoLippu(int x, int y) {
-        return pelialue[x][y].onkoLippu();
-    }
+
 
     /**
      * Metodi (testailua varten), joka palauttaa Kentan peliauleelta tietyn
@@ -205,7 +155,7 @@ public class Kentta {
     }
 
     /**
-     *Metodi plauttaa korkeus olioon tallennetun arvon.
+     *Metodi plauttaa levey olioon tallennetun arvon.
      * @return Kentan korkeuden
      */
     public int getKorkeus() {
@@ -213,7 +163,7 @@ public class Kentta {
     }
 
     /**
-     *Metodi plauttaa leveys olioon tallennetun arvon.
+     *Metodi plauttaa kokeus olioon tallennetun arvon.
      * @return Kentan leveyden
      */
     public int getLeveys() {
