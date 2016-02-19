@@ -15,3 +15,9 @@ Pelaajan pitää klikata auki laattoja pelialueelta. Joidenkin laattojen alla on
 
 
 ![luokkakaavio](luokkakaavio.png)
+
+![KentanLuominen](KentanLuominen.png)
+
+![KentaPiirto](KentanPiirto.png)
+
+![Pelaaminen](Pelaaminen.png)
