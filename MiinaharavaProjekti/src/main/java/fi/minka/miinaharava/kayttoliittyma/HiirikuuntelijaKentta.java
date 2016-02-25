@@ -5,11 +5,11 @@
  */
 package fi.minka.miinaharava.kayttoliittyma;
 
-import java.awt.Container;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
+ * Luokka, joka kertoo kayttoliittymälle tietoa hiiren klikkauksista.
  *
  * @author tminka
  */
@@ -18,7 +18,7 @@ public class HiirikuuntelijaKentta implements MouseListener {
     private final Kayttoliittyma kl;
 
     /**
-     * Konstruktori
+     * Konstruktori.
      *
      * @param kl Kayttoliittyma luokan ilmentymä
      */
@@ -26,18 +26,13 @@ public class HiirikuuntelijaKentta implements MouseListener {
         this.kl = kl;
     }
 
-    @Override
-    public void mouseClicked(MouseEvent me) {
-    }
-
     /**
-     * Metodi antaa Kayttoliitymaan tiedon, painettiinko hiirtä vasemmalla vai
-     * oikealla napilla, ja lisäksi missä kohti.
+     * Metodi antaa Kayttoliitymaan tiedon, painettiinko hiirtä vasemmalla vai oikealla napilla, ja lisäksi missä kohti.
      *
      * @param me Hiiren painaus
      */
     @Override
-    public void mousePressed(MouseEvent me) {
+    public void mouseClicked(MouseEvent me) {
         if (me.getX() < 20 || me.getY() < 20) {
             return;
         }
@@ -49,14 +44,40 @@ public class HiirikuuntelijaKentta implements MouseListener {
         }
     }
 
+    /**
+     * Aa.
+     *
+     * @param me
+     */
     @Override
-    public void mouseReleased(MouseEvent me) {
+    public void mousePressed(MouseEvent me) {
+
     }
 
+    /**
+     * Aa.
+     *
+     * @param me
+     */
+    @Override
+    public void mouseReleased(MouseEvent me) {
+
+    }
+
+    /**
+     * Aa.
+     *
+     * @param me
+     */
     @Override
     public void mouseEntered(MouseEvent me) {
     }
 
+    /**
+     * Aa.
+     *
+     * @param me
+     */
     @Override
     public void mouseExited(MouseEvent me) {
     }

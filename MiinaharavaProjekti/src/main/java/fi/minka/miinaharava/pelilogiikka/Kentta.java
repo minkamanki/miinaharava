@@ -8,6 +8,7 @@ package fi.minka.miinaharava.pelilogiikka;
 import java.util.Random;
 
 /**
+ * Luokka, jossa on taulukko laatoista, ja jossa niille asetetaan oikeat arvot, eli miinat ja liput ja vihjeet.
  *
  * @author tminka
  */
@@ -17,22 +18,24 @@ public class Kentta {
     private final Laatta[][] pelialue;
     private final int leveys;
     private final int korkeus;
+    int miinoja;
 
     /**
      * Konstruktori, jossa kutsutaan private metodia luoPelialue.
      *
-     * @param leveys
-     * @param korkeus
+     * @param leveys sijainti
+     * @param korkeus sijainti
      */
     public Kentta(int leveys, int korkeus) {
         pelialue = new Laatta[leveys][korkeus];
         this.leveys = leveys;
         this.korkeus = korkeus;
+        this.miinoja = 0;
+
     }
 
     /**
-     *Metodi, joka luo Laatta luokan ilmentymiä pelialue taulukkoon, ja joka
-     * kutsuu metodia asetaMiinat().
+     * Metodi, joka luo Laatta luokan ilmentymiä pelialue taulukkoon, ja joka kutsuu metodia asetaMiinat().
      */
     public void luoPelialue() {
         for (int i = 0; i < leveys; i++) {
@@ -47,7 +50,6 @@ public class Kentta {
 
     private void asetaMiinat() {
         Random r = new Random();
-        int miinoja = 0;
 
         if (korkeus == 9) {
             miinoja = 10;
@@ -83,24 +85,7 @@ public class Kentta {
     }
 
     /**
-     * Metodi (testauksia varten), joka tulostaa kentän syötteenä.
-     */
-//    public void tulostaKentta() {
-//        for (int i = 0; i < levey; i++) {
-//            for (int j = 0; j < kokeus; j++) {
-//                if (pelialue[i][j].onkoMiinallinen()) {
-//                    System.out.print("x");
-//                } else {
-//                    System.out.print(pelialue[i][j].getVihje());
-//                }
-//            }
-//            System.out.println("");
-//        }
-//    }
-
-    /**
-     * Metodi, joka liputtaa liputtamattoman laatan tai poistaa lipun
-     * liputetusta laatasta.
+     * Metodi, joka liputtaa liputtamattoman laatan tai poistaa lipun liputetusta laatasta.
      *
      * @param x sijainti
      * @param y sijainti
@@ -116,10 +101,9 @@ public class Kentta {
     /**
      * Metodi palauttaa halutun Laatan "miinallinen" arvon.
      *
-     * @param x
-     * @param y
+     * @param x sijainti
+     * @param y sijainti
      */
-
     public void avaaKehittyneesti(int x, int y) {
         pelialue[x][y].avaa();
 
@@ -139,15 +123,11 @@ public class Kentta {
 
     }
 
-
-
-
     /**
-     * Metodi (testailua varten), joka palauttaa Kentan peliauleelta tietyn
-     * Laatan.
+     * Metodi, joka palauttaa Kentan peliauleelta tietyn Laatan.
      *
-     * @param x
-     * @param y
+     * @param x siajinti
+     * @param y sijainti
      * @return Laatta
      */
     public Laatta laatta(int x, int y) {
@@ -155,7 +135,8 @@ public class Kentta {
     }
 
     /**
-     *Metodi plauttaa levey olioon tallennetun arvon.
+     * Metodi plauttaa levey olioon tallennetun arvon.
+     *
      * @return Kentan korkeuden
      */
     public int getKorkeus() {
@@ -163,11 +144,29 @@ public class Kentta {
     }
 
     /**
-     *Metodi plauttaa kokeus olioon tallennetun arvon.
+     * Metodi plauttaa kokeus olioon tallennetun arvon.
+     *
      * @return Kentan leveyden
      */
     public int getLeveys() {
         return leveys;
+    }
+
+    /**
+     * Metodi, joka laskee onko kakki miinat löydetty.
+     *
+     * @return onko pelaaja voittanut
+     */
+    public boolean voittiko() {
+        int avaamatta = 0;
+        for (int i = 0; i < leveys; i++) {
+            for (int j = 0; j < korkeus; j++) {
+                if (!pelialue[i][j].onkoAvattu()) {
+                    avaamatta++;
+                }
+            }
+        }
+        return avaamatta == miinoja;
     }
 
 }

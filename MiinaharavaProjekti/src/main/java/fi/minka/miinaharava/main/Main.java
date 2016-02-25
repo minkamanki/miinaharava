@@ -12,16 +12,16 @@ import fi.minka.miinaharava.kayttoliittyma.Kayttoliittyma;
  * @author tminka
  */
 /**
+ * Main metodin sisältävä luokka.
  *
  * @author tminka
  */
 public class Main {
 
     /**
-     * Main metodi, joka luo uuden Kayttoliityma luokan ilmentymän ja kutsuu sen
-     * metodia run().
+     * Main metodi, joka luo uuden Kayttoliityma luokan ilmentymän ja kutsuu sen metodia run().
      *
-     * @param args
+     * @param args komentorivi parametrit
      */
     public static void main(String[] args) {
         Kayttoliittyma kl = new Kayttoliittyma();

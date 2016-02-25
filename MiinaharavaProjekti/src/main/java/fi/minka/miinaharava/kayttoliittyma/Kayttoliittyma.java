@@ -11,36 +11,31 @@ import javax.swing.WindowConstants;
 import fi.minka.miinaharava.pelilogiikka.Peli;
 
 /**
+ * Luokka, jossa on useanlaisa metodeita, jotka vastaavat pelin toiminnasta ja etenemisestä.
  *
  * @author tminka
  */
 public class Kayttoliittyma extends JFrame {
 
-    private final Peli peli;
-    private final HiirikuuntelijaKentta hiiri;
+    private Peli peli;
+    private HiirikuuntelijaKentta hiiri;
     private Valikko valikko;
+    private UusiPeli uusi;
+    private Piirtoalusta alusta;
 
     /**
-     * Konstruktori, jossa luodaan uusi Peli- luokan ilmentymä
-     */
-    public Kayttoliittyma() {
-        peli = new Peli();
-        valikko = new Valikko(this);
-        hiiri = new HiirikuuntelijaKentta(this);
-
-    }
-
-    /**
-     * Metodi, jossa luodaan Valikko-luokan ilmentmä JFrameen ja laitetaan se
-     * näkyväksi
+     * Metodi, jossa luodaan Valikko-luokan ilmentmä JFrameen ja laitetaan se näkyväksi.
      */
     public void run() {
+        peli = new Peli();
+        valikko = new Valikko(this);
         setTitle("Menu");
         setPreferredSize(new Dimension(600, 400));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
         getContentPane().add(valikko);
-        valikko.luoValikko(getContentPane());
+        valikko.luoValikko();
 
         pack();
         setVisible(true);
@@ -48,9 +43,8 @@ public class Kayttoliittyma extends JFrame {
     }
 
     /**
-     * Metodi, jossa viedään Peli luokan ilmentymän kautta haluttu taso kentän
-     * luontia varten. Valikko otetaan pois näkyvistä ja poistetaan. Kutsutaan
-     * metodia aloitaPeli().
+     * Metodi, jossa viedään Peli luokan ilmentymän kautta haluttu taso kentän luontia varten. Valikko otetaan pois näkyvistä ja poistetaan.
+     * Kutsutaan metodia aloitaPeli().
      *
      * @param taso Käyttäjän valitsema pelin vaikeus taso
      */
@@ -61,25 +55,24 @@ public class Kayttoliittyma extends JFrame {
     }
 
     /**
-     * Metodi, jossa JFrameen lisätään ilmentymät Piirtoalsutasta ja
-     * HiirikuntelijaKentasta.
+     * Metodi, jossa JFrameen lisätään ilmentymät Piirtoalsutasta ja HiirikuntelijaKentasta.
      *
      */
     public void aloitaPeli() {
-        getContentPane().add(new Piirtoalusta(peli));
+        hiiri = new HiirikuuntelijaKentta(this);
+        alusta = new Piirtoalusta(peli);
+        getContentPane().add(alusta);
         getContentPane().addMouseListener(hiiri);
 
         pack();
         setTitle("Miinaharava");
 
-        setSize(peli.getKentta().getLeveys() * 20 + 50, peli.getKentta().getKorkeus() * 20 + 50);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setSize((peli.getKentta().getLeveys() * 20) + 42, (peli.getKentta().getKorkeus() * 20) + 80);
         setVisible(true);
     }
 
     /**
-     * Metodi, jossa viedään tieto klikkauksesta eteenpäin, ja josssa
-     * tarksitetaan kyseisen klikkauksen aiheuttama voitto tai häviö.
+     * Metodi, jossa viedään tieto klikkauksesta eteenpäin, ja josssa tarksitetaan kyseisen klikkauksen aiheuttama voitto tai häviö, missä tapauksissa kutsuttaiiin metodia uusiPeli().
      *
      * @param x Siainti leveys suunnassa
      * @param y Sijainti korkeus suunnassa
@@ -87,18 +80,18 @@ public class Kayttoliittyma extends JFrame {
     public void vasenKlikkaus(int x, int y) {
         if (!peli.getKentta().laatta(x, y).onkoLippu()) {
             peli.getKentta().avaaKehittyneesti(x, y);
-            repaint();
             if (peli.getKentta().laatta(x, y).onkoMiinallinen()) {
-                System.out.println("HÄVSIT");
-            } else {
-                //tarkista voitto
+                peli.havia();
+                uusiPeli();
+            } else if (peli.getKentta().voittiko()) {
+                uusiPeli();
             }
+            repaint();
         }
     }
 
     /**
-     * Metodi, jossa viedään tieto oikean puolisesta klikkauksesta eteenpäin,
-     * liputuksen aikaan saamiseksi.
+     * Metodi, jossa viedään tieto oikean puolisesta klikkauksesta eteenpäin, liputuksen aikaan saamiseksi.
      *
      * @param x Siainti leveys suunnassa
      * @param y Sijainti korkeus suunnassa
@@ -111,4 +104,17 @@ public class Kayttoliittyma extends JFrame {
         repaint();
     }
 
+    private void uusiPeli() {
+        getContentPane().removeMouseListener(hiiri);
+        uusi = new UusiPeli(this);
+        uusi.luoNapit();
+    }
+
+    /**
+     * Metodi poistaa luodun piirtoalustan paneelista, ja kutsuu metodia run(), uuden pelin aloittamiseksi.
+     */
+    public void uudenPelinAloitus() {
+        getContentPane().remove(alusta);
+        run();
+    }
 }

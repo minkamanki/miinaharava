@@ -6,6 +6,7 @@
 package fi.minka.miinaharava.pelilogiikka;
 
 /**
+ * Luokka, jossa on yksittäisen laatan tiedot.
  *
  * @author tminka
  */
@@ -17,7 +18,7 @@ public class Laatta {
     private int vihje;
 
     /**
-     * Konstruktori
+     * Konstruktori.
      */
     public Laatta() {
         this.avattu = false;
@@ -64,7 +65,7 @@ public class Laatta {
     /**
      * Metodi, joka asettaa annatun maaran, vihjeeksi.
      *
-     * @param maara
+     * @param maara määrä
      */
     public void kosketukset(int maara) {
         this.vihje = maara;

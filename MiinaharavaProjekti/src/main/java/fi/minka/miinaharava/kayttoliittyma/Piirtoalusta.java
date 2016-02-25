@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
+ * Piirtoalusta luokka vastaa kaikesta graaffisesta osuudesta pelissä.
  *
  * @author tminka
  */
@@ -24,8 +25,7 @@ public class Piirtoalusta extends JPanel {
     private final ImageIcon laatta;
 
     /**
-     * Konstruktori, jossa asetataan parametrina saatu Peli luokan ilmentyma
-     * peli olioksi.
+     * Konstruktori, jossa asetataan parametrina saatu Peli luokan ilmentyma peli olioksi.
      *
      * @param peli Peli-luokan ilmentyma
      */
@@ -39,9 +39,10 @@ public class Piirtoalusta extends JPanel {
     /**
      * Metodi kutsuu metodia piirraLaatta, kaikille Kentta luoka Laatoille.
      *
-     * @param g
+     * @param g Graphics
      */
     public void piirraKentta(Graphics g) {
+        tarkistaVoitto(g);
         for (int i = 0; i < peli.getKentta().getLeveys(); i++) {
             for (int j = 0; j < peli.getKentta().getKorkeus(); j++) {
                 piirraLaatta(i, j, g);
@@ -54,7 +55,7 @@ public class Piirtoalusta extends JPanel {
      *
      * @param x Siainti leveys suunnassa
      * @param y Sijainti korkeus suunnassa
-     * @param g
+     * @param g Graphics
      */
     public void piirraLaatta(int x, int y, Graphics g) {
 
@@ -74,11 +75,11 @@ public class Piirtoalusta extends JPanel {
                 g.setColor(Color.LIGHT_GRAY);
                 g.fillRect(21 + (x * 20), 21 + (y * 20), 19, 19);
                 int vihje = peli.getKentta().laatta(x, y).getVihje();
-                
+
                 if (vihje == 1) {
                     g.setColor(Color.BLUE);
-                    
-                } else if ( vihje== 2) {
+
+                } else if (vihje == 2) {
                     g.setColor(new Color(14, 168, 14));
 
                 } else if (vihje == 3) {
@@ -96,7 +97,7 @@ public class Piirtoalusta extends JPanel {
                 } else if (vihje == 7) {
                     g.setColor(new Color(114, 47, 86));
 
-                } else if (vihje!= 0) {
+                } else if (vihje != 0) {
                     g.setColor(Color.black);
                 }
 
@@ -107,15 +108,27 @@ public class Piirtoalusta extends JPanel {
     }
 
     /**
-     * Metodi overridaa paintComponent meodin, asettaa taustaksi vaalean harmaan
-     * ja kutsuu meodia piirraKentta.
+     * Metodi overridaa paintComponent meodin, asettaa taustaksi vaalean harmaan ja kutsuu meodia piirraKentta.
      *
-     * @param g
+     * @param g Graphics
      */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         super.setBackground(Color.lightGray);
         piirraKentta(g);
+    }
+
+    private void tarkistaVoitto(Graphics g) {
+        if (peli.getKentta().voittiko()) {
+            g.setColor(Color.BLACK);
+            g.setFont(new Font("default", Font.BOLD, 18));
+            g.drawString("Voitit!", 25, (peli.getKentta().getKorkeus() * 20) + 50);
+        } else if (peli.onkoHavitty()) {
+            g.setColor(Color.BLACK);
+            g.setFont(new Font("default", Font.BOLD, 18));
+            g.drawString("Hävisit!", 25, (peli.getKentta().getKorkeus() * 20) + 50);
+
+        }
     }
 }

@@ -6,15 +6,25 @@
 package fi.minka.miinaharava.pelilogiikka;
 
 /**
+ * Luokka, jossa luodaan kenttä ja pidetään tietoa siitä onko hävitty.
  *
  * @author tminka
  */
 public class Peli {
 
     private Kentta kentta;
+    private boolean havitty;
 
     /**
-     * Metodi, joka luo Kentta luokan ilmentymän, halutun kokoisena.
+     * Konstruktorissa asetetaan havitty -arvoksi false.
+     */
+    public Peli() {
+        havitty = false;
+    }
+
+    /**
+     * Metodi, joka luo Kentta luokan ilmentymän, halutun kokoisena. 
+     * Kutsuu Kentta luokan metodia luoPelialue();
      *
      * @param taso Valittu vaikeusaste pelille.
      */
@@ -30,7 +40,7 @@ public class Peli {
             kentta = new Kentta(30, 16);
 
         }
-        
+
         kentta.luoPelialue();
     }
 
@@ -41,6 +51,21 @@ public class Peli {
      */
     public Kentta getKentta() {
         return kentta;
+    }
+
+    /**
+     * Metodissa asetetaan havia arvo todeksi.
+     */
+    public void havia() {
+        havitty = true;
+    }
+
+    /**
+     *Metodissa palautetaan havitty arvo.
+     * @return havitty
+     */
+    public boolean onkoHavitty() {
+        return havitty;
     }
 
 }
