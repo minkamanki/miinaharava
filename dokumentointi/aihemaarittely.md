@@ -8,8 +8,7 @@ Pelaajan pitää klikata auki laattoja pelialueelta. Joidenkin laattojen alla on
 **Pelaajan toiminnot:** 
 
 * Kentänkoon/vaikeusasteen valitseminen
-* Pelin pelaaminen
-* Pelin pausettaminen
+* Pelin pelaaminen: laattojen avaus, liputus
 * Pelin lopettaminen enen voittoa
 * Voiton jälkeen pelaaja valitsee tahtooko uuden pelin vai sulkea ohjelman
 

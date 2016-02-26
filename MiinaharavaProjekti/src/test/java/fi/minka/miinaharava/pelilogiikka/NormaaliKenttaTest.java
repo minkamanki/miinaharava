@@ -89,4 +89,9 @@ public class NormaaliKenttaTest {
         assertEquals(true, kentta.laatta(1, 1).onkoAvattu());
 
     }
+    
+    @Test
+    public void eiVoittoa(){
+        assertEquals(false, kentta.voittiko());
+    }
 }

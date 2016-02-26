@@ -64,5 +64,16 @@ public class PeliTest {
         peli.luoKentta(1);
         assertEquals(peli.getKentta().laatta(1, 1).onkoAvattu(), false);
     }
+    
+    @Test
+    public void eiHavitty(){
+        assertEquals(peli.onkoHavitty(), false);
+    }
+    
+        @Test
+    public void onHavitty(){
+        peli.havia();
+        assertEquals(peli.onkoHavitty(), true);
+    }
 
 }

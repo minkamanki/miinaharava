@@ -20,7 +20,7 @@ public class HelppoKenttaTest {
     @Before
     public void setUp() {
         kentta = new Kentta(9, 9);
-        
+
         kentta.luoPelialue();
     }
 
@@ -35,7 +35,7 @@ public class HelppoKenttaTest {
                 }
             }
         }
-        
+
         assertEquals(10, miinoja);
     }
 
@@ -47,6 +47,22 @@ public class HelppoKenttaTest {
     @Test
     public void leveys() {
         assertEquals(9, kentta.getLeveys());
+    }
+
+    @Test
+    public void nsVoitto() {
+        int avaamatta = 81;
+
+        for (int i = 0; i < kentta.getKorkeus(); i++) {
+            for (int j = 0; j < kentta.getLeveys(); j++) {
+                if (avaamatta > 10) {
+                    kentta.laatta(i, j).avaa();
+                    avaamatta--;
+                }
+            }
+        }
+
+        assertEquals(true, kentta.voittiko());
     }
 
 }
