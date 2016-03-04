@@ -11,3 +11,7 @@ Pitkän työstämisen ja ircistä saatujen neuvojen avulla on nyt Kentta luokank
 Yritin parhaani mukaan tehdä testejä hiirikuuntelijoilleni, mutta en saanut mitään toimimaan, joten nyt vain Kayttoliittyma luokkalla on testit. Testasin Robottilla ja yritin myös muita keinoja kuten luoda MouseEventtejä testeissä. Jostain syystä Robotti klikkaili kokonaan framen ulkopuolelta, eikä mistään oikein löytynyt kunnon tietoa.  
 Luokilla HiirikuuntelijaKenttä, Piirtoalusta, Valikko ja UusiPeli ei siis ole testejä.   
 Tein Kayttoliittyma luokkaan kaikki mahdolliset testit, jotka vain osasin tehdä.
+
+
+**Ei toimi:**  
+Jar ei jostain syystä hyväksy kuviani. Testasin netistä löytyviä neuvoja mutta mikään ei auttanut.
