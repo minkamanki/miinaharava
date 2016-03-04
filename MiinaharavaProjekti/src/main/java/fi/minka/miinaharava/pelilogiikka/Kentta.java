@@ -49,7 +49,7 @@ public class Kentta {
     }
 
     private void asetaMiinat() {
-        Random r = new Random();
+        Random random = new Random();
 
         if (korkeus == 9) {
             miinoja = 10;
@@ -60,11 +60,11 @@ public class Kentta {
         }
 
         for (int i = 0; i < miinoja; i++) {
-            int x = r.nextInt(leveys);
-            int y = r.nextInt(korkeus);
+            int x = random.nextInt(leveys);
+            int y = random.nextInt(korkeus);
             while (pelialue[x][y].onkoMiinallinen()) {
-                x = r.nextInt(leveys);
-                y = r.nextInt(korkeus);
+                x = random.nextInt(leveys);
+                y = random.nextInt(korkeus);
             }
 
             pelialue[x][y].miinoita();
@@ -74,7 +74,13 @@ public class Kentta {
 
     }
 
-    private void asetaVihjeet(int x, int y) {
+    /**
+     * Metodi, asettaa miinoitetun Laatan ympärillä oleviin tiedon tästä, kasvattamalla niiden vihjeitä yhdellä.
+     *
+     * @param x miinoitetun sijainti
+     * @param y miinoitetun sijainti
+     */
+    public void asetaVihjeet(int x, int y) {
         for (int i = x - 1; i <= x + 1; i++) {
             for (int j = y - 1; j <= y + 1; j++) {
                 if (!(i < 0) && i < leveys && !(j < 0) && j < korkeus) {

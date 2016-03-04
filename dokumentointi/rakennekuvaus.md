@@ -4,3 +4,5 @@ Ohjelmassani on kolme erillistä pakkausta: main, pelilogiikka ja kayttoliittyma
 Latta -luokassa on tiedot, yksittäisen laattaolion tiedot. Kentta luokassa ne asetetaan ja luodaan, ja niitä myös kutusutaan sitä kautta. Peli luokka pitää tietoa häviämisestä, sekä luo oikean tasoisen kentän.  
 
 Valikko -luokka luo kolme nappia, joilla käyttäjä voi valita haluamansa tason pelille. Piirtoalusta piirtää kentän konkreettisena laattojen mukaisesti. HiirikuuntelijaKentta taas välittää tiedon mihin kohtaan käyttäjä on klikannut ja kummalla hiiren näppäimellä. Häviön tai voiton jälkeen ponnahtaa esiin uusi ikkuna, jonka luo UusiPeli luokka. Se luo kaksi nappia, joilla käyttäjä voi valita uuden pelin tai pelin lopetuksen.
+
+![luokkakaavio](luokkakaavio.png)

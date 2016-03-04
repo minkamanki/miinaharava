@@ -51,7 +51,6 @@ public class HiirikuuntelijaKentta implements MouseListener {
      */
     @Override
     public void mousePressed(MouseEvent me) {
-
     }
 
     /**
@@ -61,7 +60,6 @@ public class HiirikuuntelijaKentta implements MouseListener {
      */
     @Override
     public void mouseReleased(MouseEvent me) {
-
     }
 
     /**

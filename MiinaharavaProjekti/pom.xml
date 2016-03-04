@@ -41,11 +41,13 @@
                 <configuration>
                     <targetClasses>
                         <param>fi.minka.miinaharava.pelilogiikka.*</param>
-                        
+                        <param>fi.minka.miinaharava.kayttoliittyma.Kayttoliittyma</param>
+         
                         
                     </targetClasses>
                     <targetTests>
                         <param>fi.minka.miinaharava.pelilogiikka.*</param>
+                        <param>fi.minka.miinaharava.kayttoliittyma.KayttoliittymaTest</param>
                         
                         
                     </targetTests>

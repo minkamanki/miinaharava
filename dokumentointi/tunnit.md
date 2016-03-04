@@ -18,6 +18,8 @@
 |19.2|5h|Muokkasin koodia, poistin turhia metodeita ja copypastea -koodia. Tein 3kpl sekvenssikaavioita. Katselmointi.|
 |24.2|4h|Tein toiminnallisuudet voittaminen ja häviäminen, ja muokkasin koodia siten, että pelin jälkeen voi aloittaa uuden pelin.|
 |25.2|1h|Korjasin Checkstyle -virheet|
+|3.3|30min|Aloitin loppuviimeisteyn|
+|4.3.|5h|Loin paljon uusia testejä, keskityin samalla mutaatioden tappamiseen yms. Loppu palautus.|
 
 
 

@@ -106,4 +106,12 @@ public class Laatta {
     public int getVihje() {
         return vihje;
     }
+
+    /**
+     * Metodi jolla nollataan vihje, koska testit tarvii.
+     *
+     */
+    public void nollaaVihje() {
+        vihje = 0;
+    }
 }

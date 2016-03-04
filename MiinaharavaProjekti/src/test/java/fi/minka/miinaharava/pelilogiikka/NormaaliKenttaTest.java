@@ -83,15 +83,50 @@ public class NormaaliKenttaTest {
         assertEquals(false, kentta.laatta(1, 1).onkoLippu());
 
     }
+
     @Test
     public void avaaKehittyneesti() {
-       kentta.avaaKehittyneesti(1, 1);
+        kentta.avaaKehittyneesti(1, 1);
         assertEquals(true, kentta.laatta(1, 1).onkoAvattu());
 
     }
-    
+
     @Test
-    public void eiVoittoa(){
+    public void eiVoittoa() {
         assertEquals(false, kentta.voittiko());
     }
+
+    @Test
+    public void asetaVihje() {
+        kentta.laatta(1, 1).nollaaVihje();
+        kentta.asetaVihjeet(1, 2);
+        kentta.asetaVihjeet(2, 2);
+        kentta.asetaVihjeet(2, 1);
+        assertEquals(3, kentta.laatta(1, 1).getVihje());
+    }
+
+    @Test
+    public void asetaVihje2() {
+        kentta.laatta(3, 3).nollaaVihje();
+        kentta.asetaVihjeet(2, 2);
+        kentta.asetaVihjeet(2, 4);
+        kentta.asetaVihjeet(2, 3);
+        kentta.asetaVihjeet(3, 2);
+        kentta.asetaVihjeet(3, 4);
+        kentta.asetaVihjeet(4, 4);
+        kentta.asetaVihjeet(4, 3);
+        kentta.asetaVihjeet(4, 2);
+        assertEquals(8, kentta.laatta(3, 3).getVihje());
+    }
+
+    @Test
+    public void kehittynytAvausNs() {
+        kentta.laatta(1, 1).nollaaVihje();
+        kentta.avaaKehittyneesti(1, 1);
+        assertEquals(true, kentta.laatta(1, 2).onkoAvattu());
+        assertEquals(true, kentta.laatta(2, 2).onkoAvattu());
+        assertEquals(true, kentta.laatta(2, 1).onkoAvattu());
+    }
+
+
 }

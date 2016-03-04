@@ -104,7 +104,10 @@ public class Kayttoliittyma extends JFrame {
         repaint();
     }
 
-    private void uusiPeli() {
+    /**
+     *Metodi, joka poistaa hiirikuuntelijan käytöstä ja luo uuden ilmentymän UusiPeli luokasta, ja kutsuu sen metodia.
+     */
+    public void uusiPeli() {
         getContentPane().removeMouseListener(hiiri);
         uusi = new UusiPeli(this);
         uusi.luoNapit();
@@ -116,5 +119,13 @@ public class Kayttoliittyma extends JFrame {
     public void uudenPelinAloitus() {
         getContentPane().remove(alusta);
         run();
+    }
+    
+    /**
+     *Metodi testausta varten.
+     * @return peli
+     */
+    public Peli getPeli() {
+        return peli;
     }
 }
