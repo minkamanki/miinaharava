@@ -31,9 +31,9 @@ public class Piirtoalusta extends JPanel {
      */
     public Piirtoalusta(Peli peli) {
         this.peli = peli;
-        lippu = new ImageIcon("flag.png");
-        miina = new ImageIcon("mine.png");
-        laatta = new ImageIcon("laattta.png");
+        lippu = new ImageIcon("Kuvat/flag.png");
+        miina = new ImageIcon("Kuvat/mine.png");
+        laatta = new ImageIcon("Kuvat/laattta.png");
     }
 
     /**
